@@ -32,3 +32,21 @@ Route::post('/admin/satuan/create', 'Admin\SatuanController@create');
 Route::get('/admin/satuan/edit/{id}', 'Admin\SatuanController@edit');
 Route::post('/admin/satuan/update/{id}', 'Admin\SatuanController@update');
 Route::get('/admin/satuan/delete/{id}', 'Admin\SatuanController@delete');
+
+
+//jenis_barang
+Route::get('/admin/jenis_barang', 'Admin\JenisController@read');
+Route::get('/admin/jenis_barang/add', 'Admin\JenisController@add');
+Route::post('/admin/jenis_barang/create', 'Admin\JenisController@create');
+Route::get('/admin/jenis_barang/edit/{id}', 'Admin\JenisController@edit');
+Route::post('/admin/jenis_barang/update/{id}', 'Admin\JenisController@update');
+Route::get('/admin/jenis_barang/delete/{id}', 'Admin\JenisController@delete');
+
+
+//barang
+Route::get('/admin/barang', 'Admin\DataController@read');
+Route::get('/admin/barang/add', 'Admin\DataController@add');
+Route::post('/admin/barang/create', 'Admin\DataController@create');
+Route::get('/admin/barang/edit/{id}', 'Admin\DataController@edit');
+Route::post('/admin/barang/update/{id}', 'Admin\DataController@update');
+Route::get('/admin/barang/delete/{id}', 'Admin\DataController@delete');
