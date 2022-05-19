@@ -25,7 +25,7 @@ Route::get('/admin/home', 'Admin\HomeController@index');
 Route::get('/admin/change', 'Admin\HomeController@change');
 Route::post('/admin/change_password', 'Admin\HomeController@change_password');
 
-//Jurusan
+//Satuan
 Route::get('/admin/satuan', 'Admin\SatuanController@read');
 Route::get('/admin/satuan/add', 'Admin\SatuanController@add');
 Route::post('/admin/satuan/create', 'Admin\SatuanController@create');
