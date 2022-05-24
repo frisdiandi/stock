@@ -64,7 +64,7 @@
                         @foreach($barang_keluar as $data)
                         <tr class="odd selected">
                           <td>{{$no++}}</td>
-                          <td>{{$data->nama}}</td>
+                          <td>{{$data->id_barang}}</td>
                           <td>{{$data->tanggal}}</td>
                           <td>{{$data->jumlah}}</td>
                           <td class="text-center">
@@ -91,7 +91,7 @@
                 <h2 class="text-center">Apakah Anda Yakin Menghapus Data Ini ?<h2><hr>
                 <div class="form-group">
                   <label for="exampleInputUsername1">Nama barang</label>
-                  <label class="form-control">{{$data->nama}}</label>
+                  <label class="form-control">{{$data->id_barang}}</label>
                 </div>
                 <div class="row mt-1">
                   <div class="col-md-6">

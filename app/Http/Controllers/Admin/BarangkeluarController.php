@@ -38,7 +38,9 @@ class BarangkeluarController extends Controller
         DB::table('barang_keluar')  
             ->where('id', $id)
             ->update([
-            'id_barang' => $request->id_barang]);
+                'id_barang' => $request->id_barang,
+                'tanggal' => $request->tanggal,
+                'jumlah' => $request->jumlah]);
 
         return redirect('/admin/barang_keluar')->with("success","Data Berhasil Diupdate !");
     }

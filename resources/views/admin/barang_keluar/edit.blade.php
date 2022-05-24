@@ -36,19 +36,19 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                       <label for="exampleInputUsername1">Nama barang</label>
-                      <input type="text" autofocus required class="form-control" name="nama" placeholder="Masukan Nama barang..." value="{{$barang->nama}}">
+                      <input type="text" autofocus required class="form-control" name="id_barang" placeholder="Masukan Nama barang..." value="{{$barang_keluar->id_barang}}">
                     </div>
 
                     <div class="form-group">
                       <label for="exampleInputUsername1">Tanggal</label>
-                      <input type="date" autofocus required class="form-control" name="tanggal">
+                      <input type="date" autofocus required class="form-control" name="tanggal" value="{{$barang_keluar->tanggal}}">
                     </div>
 
                     <div class="form-group">
                       <label for="exampleInputUsername1">Jumlah</label>
-                      <input type="text" autofocus required class="form-control" name="jumlah" placeholder="Masukan Jumlah Barang...">
+                      <input type="text" autofocus required class="form-control" name="jumlah" placeholder="Masukan Jumlah Barang..." value="{{$barang_keluar->jumlah}}">
                     </div>
-                    
+
                     <button type="submit" class="btn btn-primary mt-1 mr-2"><i class="mdi mdi-content-save-all"></i> Update Data</button>
                   </form>
                 </div>
