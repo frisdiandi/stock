@@ -15,14 +15,16 @@ class BarangMasuk extends Migration
     {
         Schema::create('barang_masuk', function (Blueprint $table) {
             $table->id();
-            $table->string('id_barang');
+            $table->foreignId('id_barang')->constrained('barang')->onDelete('cascade')->onUpdate('cascade'); 
             $table->string('tanggal');
             $table->string('jumlah');
             $table->string('id_user');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('NULL ON UPDATE CURRENT_TIMESTAMP'))->nullable();
         });
+    
     }
+
 
     /**
      * Reverse the migrations.

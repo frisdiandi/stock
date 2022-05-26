@@ -5,14 +5,24 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\barang_masuks;
+use App\barangs;
 use Auth;
 
 class BarangmasukController extends Controller
 {
-    public function read(){
-        $barang_masuk = DB::table('barang_masuk')->orderBy('id','DESC')->get();
-        return view('admin.barang_masuk.index',['barang_masuk'=>$barang_masuk]);
+
+    public function read()
+    {
+            
+        $barang_masuk = barang_masuks::all();
+        return view('admin.barang_masuk.index', compact('barang_masuk'));
     }
+   // public function read(){
+       
+       // $barang_masuk = DB::table('barang_masuk')->orderBy('id','DESC')->get();
+        //return view('admin.barang_masuk.index',['barang_masuk'=>$barang_masuk]);
+    //}
     public function add(){
     	return view('admin.barang_masuk.tambah');
     }

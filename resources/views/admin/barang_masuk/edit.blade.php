@@ -35,9 +35,19 @@
                   <form class="forms-sample" action="/admin/barang_masuk/update/{{$barang_masuk->id}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
+                      <select class="form-control select2" style="width:100%;" name="id_barang" id="id_barang">
+                      <option disabled value>Pilih Barang</option>
+                      @foreach ($barang_masuk as $data)
+                      <option value="{{$data->id}}">{{ $data->barang}}</option>
+                      @endforeach
+                    </select>
+                    </div>
+
+
+                    <!-- <div class="form-group">
                       <label for="exampleInputUsername1">Nama barang</label>
                       <input type="text" autofocus required class="form-control" name="id_barang" placeholder="Masukan Nama barang..." value="{{$barang_masuk->id_barang}}">
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                       <label for="exampleInputUsername1">Tanggal</label>

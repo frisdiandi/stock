@@ -33,6 +33,7 @@ Route::get('/admin/satuan/edit/{id}', 'Admin\SatuanController@edit');
 Route::post('/admin/satuan/update/{id}', 'Admin\SatuanController@update');
 Route::get('/admin/satuan/delete/{id}', 'Admin\SatuanController@delete');
 
+<<<<<<< HEAD
 //Barang Masuk
 Route::get('/admin/barang_masuk', 'Admin\BarangmasukController@read');
 Route::get('/admin/barang_masuk/add', 'Admin\BarangmasukController@add');
@@ -48,3 +49,22 @@ Route::post('/admin/barang_keluar/create', 'Admin\BarangkeluarController@create'
 Route::get('/admin/barang_keluar/edit/{id}', 'Admin\BarangkeluarController@edit');
 Route::post('/admin/barang_keluar/update/{id}', 'Admin\BarangkeluarController@update');
 Route::get('/admin/barang_keluar/delete/{id}', 'Admin\BarangkeluarController@delete');
+=======
+
+//jenis_barang
+Route::get('/admin/jenis_barang', 'Admin\JenisController@read');
+Route::get('/admin/jenis_barang/add', 'Admin\JenisController@add');
+Route::post('/admin/jenis_barang/create', 'Admin\JenisController@create');
+Route::get('/admin/jenis_barang/edit/{id}', 'Admin\JenisController@edit');
+Route::post('/admin/jenis_barang/update/{id}', 'Admin\JenisController@update');
+Route::get('/admin/jenis_barang/delete/{id}', 'Admin\JenisController@delete');
+
+
+//barang
+Route::get('/admin/barang', 'Admin\DataController@read');
+Route::get('/admin/barang/add', 'Admin\DataController@add');
+Route::post('/admin/barang/create', 'Admin\DataController@create');
+Route::get('/admin/barang/edit/{id}', 'Admin\DataController@edit');
+Route::post('/admin/barang/update/{id}', 'Admin\DataController@update');
+Route::get('/admin/barang/delete/{id}', 'Admin\DataController@delete');
+>>>>>>> c2ffc1dfd68f2b9572be7295689956107970d2ce

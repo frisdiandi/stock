@@ -15,7 +15,7 @@ class BarangKeluar extends Migration
     {
         Schema::create('barang_keluar', function (Blueprint $table) {
             $table->id();
-            $table->string('id_barang');
+            $table->foreignId('id_barang')->constrained('barang')->onDelete('cascade')->onUpdate('cascade'); 
             $table->string('tanggal');
             $table->string('jumlah');
             $table->string('id_user');

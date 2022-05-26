@@ -1,5 +1,5 @@
 @extends('admin.layouts.app', [
-    'activePage' => 'setting',
+    'activePage' => 'master',
   ])
 
 @section('content')
@@ -10,8 +10,8 @@
             <div class="col-md-12 grid-margin">
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">Data Transaksi</h3>
-                  <h6 class="font-weight-normal mb-0">Data Barang Masuk</h6>
+                  <h3 class="font-weight-bold">Data Master</h3>
+                  <h6 class="font-weight-normal mb-0">Data Barang</h6>
                 </div>
                 <div class="col-12 col-xl-4">
                  <div class="justify-content-end d-flex">
@@ -26,8 +26,8 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex justify-content-between">
-                    <h3><i class="mdi mdi-view-list"></i> List Data Barang Masuk</h3>
-                    <a href="/admin/barang_masuk/add">
+                    <h3><i class="mdi mdi-view-list"></i> List Data Barang</h3>
+                    <a href="/admin/barang/add">
                       <button type="button" class="btn btn-inverse-info btn-rounded btn-sm"><i class="mdi mdi-library-plus mr-1"></i> Tambah Data</button>
                     </a>
                   </div>
@@ -53,22 +53,18 @@
                       <thead class="bg-primary" style="color: white">
                         <tr>
                           <th>#</th>
-                          <th>Nama barang</th>
-                          <th>Tanggal</th>
-                          <th>Jumlah</th>
+                          <th>Nama Barang</th>
                           <th class="text-center">Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php $no = 1; ?>
-                        @foreach($barang_masuk as $data)
+                        @foreach($barang as $data)
                         <tr class="odd selected">
                           <td>{{$no++}}</td>
-                          <td>{{$data->barang}}</td>
-                          <td>{{$data->tanggal}}</td>
-                          <td>{{$data->jumlah}}</td>
+                          <td>{{$data->nama}}</td>
                           <td class="text-center">
-                            <a href="/admin/barang_masuk/edit/{{$data->id}}"><button class="btn btn-inverse-success btn-sm"><i class="ti-pencil"> Edit</i></button></a>
+                            <a href="/admin/barang/edit/{{$data->id}}"><button class="btn btn-inverse-success btn-sm"><i class="ti-pencil"> Edit</i></button></a>
                             <button class="btn btn-inverse-danger btn-sm" data-toggle="modal" data-target="#data-{{$data->id}}"><i class="ti-trash"> Delete</i></button>
                           </td>
                         </tr>
@@ -83,19 +79,39 @@
         </div>
         <!-- content-wrapper ends -->
         <!-- Modal -->
-        @foreach($barang_masuk as $data)
+        @foreach($barang as $data)
         <div class="modal fade" id="data-{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-body">
                 <h2 class="text-center">Apakah Anda Yakin Menghapus Data Ini ?<h2><hr>
                 <div class="form-group">
-                  <label for="exampleInputUsername1">Nama barang</label>
-                  <label class="form-control">{{$data->id_barang}}</label>
+                  <label for="exampleInputUsername1">Nama Barang</label>
+                  <label class="form-control">{{$data->nama}}</label>
                 </div>
+
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Harga Barang</label>
+                    <label class="form-control">{{$data->harga}}</label>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputUsername1">Jumlah Barang</label>
+                    <label class="form-control">{{$data->jumlah}}</label>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputUsername1">id_satuan Barang</label>
+                    <label class="form-control">{{$data->id_satuan}}</label>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputUsername1">id_jenis Barang</label>
+                    <label class="form-control">{{$data->id_jenis}}</label>
+                  </div>
                 <div class="row mt-1">
                   <div class="col-md-6">
-                    <a href="/admin/barang_masuk/delete/{{$data->id}}" style="text-decoration: none;">
+                    <a href="/admin/barang/delete/{{$data->id}}" style="text-decoration: none;">
                       <button type="button" class="btn btn-inverse-info btn-block">Ya</button>
                     </a>
                   </div>
