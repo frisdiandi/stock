@@ -126,8 +126,8 @@
             </a>
             <div class="collapse" id="ui-setting">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/admin/versi">Data Barang Masuk</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/admin/kantor">Data Barang Keluar</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/barang_masuk">Data Barang Masuk</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/barang_keluar">Data Barang Keluar</a></li>
               </ul>
             </div>
           </li>
