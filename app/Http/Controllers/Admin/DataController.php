@@ -15,7 +15,8 @@ class DataController extends Controller
     }
 
     public function add(){
-    	return view('admin.barang.tambah');
+        $satuan= DB::table('satuan')->get();
+    	return view('admin.barang.tambah',['satuan'=>$satuan]);
     }
 
     public function create(Request $request){
@@ -37,7 +38,11 @@ class DataController extends Controller
 
     public function edit($id){
         $barang= DB::table('barang')->where('id',$id)->first();
-        return view('admin.barang.edit',['barang'=>$barang]);
+
+        $satuan= DB::table('satuan')->find($magang->id_universitas);
+        $satuan_all= DB::table('satuan')->where('id','!=',$satuan->id)->get();
+
+        return view('admin.barang.edit',['barang'=>$barang,'satuan'=>$satuan,'satuanAll'=>$satuanAll]);
     }
 
     public function update(Request $request, $id) {

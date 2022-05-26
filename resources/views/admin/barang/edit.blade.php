@@ -50,8 +50,13 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="exampleInputUsername1">id_satuan Barang</label>
-                        <input type="text" autofocus required class="form-control" name="id_satuan" placeholder="Masukan id_satuan barang..." value="{{$barang->nama}}">
+                        <label>Satuan</label>
+                        <select required name="id_satuan" class="js-example-basic-single w-100">
+                          <option value="{{$satuan->id}">{{$satuan->nama}}-</option>
+                          @foreach($satuanAll as $data)
+                          <option value="{{$data->id}}">{{$data->nama}}</option>
+                          @endforeach
+                        </select>
                       </div>
 
                       <div class="form-group">
