@@ -64,7 +64,13 @@
                         @foreach($barang_masuk as $data)
                         <tr class="odd selected">
                           <td>{{$no++}}</td>
-                          <td>{{$data->barang}}</td>
+                          <td>
+                            <?php
+                              $id_barang = $data->id_barang;
+                              $barang= DB::table('barang')->where('id',$id_barang)->first();
+                              echo $barang->nama;
+                            ?>
+                          </td>
                           <td>{{$data->tanggal}}</td>
                           <td>{{$data->jumlah}}</td>
                           <td class="text-center">

@@ -15,25 +15,33 @@ class BarangmasukController extends Controller
     public function read()
     {
             
-        $barang_masuk = barang_masuks::all();
-        return view('admin.barang_masuk.index', compact('barang_masuk'));
+        $barang_masuk = DB::table('barang_masuk')->orderBy('id','DESC')->get();
+        return view('admin.barang_masuk.index',['barang_masuk'=>$barang_masuk]);
+
     }
-   // public function read(){
-       
-       // $barang_masuk = DB::table('barang_masuk')->orderBy('id','DESC')->get();
-        //return view('admin.barang_masuk.index',['barang_masuk'=>$barang_masuk]);
-    //}
     public function add(){
-    	return view('admin.barang_masuk.tambah');
+        $barang= DB::table('barang')->get();
+    	return view('admin.barang_masuk.tambah',['barang'=>$barang]);
     }
 
     public function create(Request $request){
-        DB::table('barang_masuk')
-        ->join('barang','barang.nama','=', 'barang_masuk.id_barang')
-        ->get()
-        ->insert([  
+        DB::table('barang_masuk')->insert([
+            'id_barang' => $request->id_barang,
             'tanggal' => $request->tanggal,
-            'jumlah' => $request->jumlah]);
+            'jumlah' => $request->jumlah,
+            'id_user' => Auth::User()->id
+        ]);
+
+        $barang= DB::table('barang')->where('id',$request->id_barang)->first();
+
+        $stock = $barang->jumlah + $request->jumlah;
+
+        DB::table('barang')
+            ->where('id', $request->id_barang)
+            ->update([
+            'jumlah' => $stock
+        ]);
+
 
         return redirect('/admin/barang_masuk')->with("success","Data Berhasil Ditambah !");
     }
@@ -45,7 +53,11 @@ class BarangmasukController extends Controller
 
     public function edit($id){
         $barang_masuk= DB::table('barang_masuk')->where('id',$id)->first();
-        return view('admin.barang_masuk.edit',['barang_masuk'=>$barang_masuk]);
+        $barang= DB::table('barang')->find($barang->id);
+        return view('admin.barang_masuk.edit',['barang_masuk'=>$barang_masuk,'barang'=>$barang]);
+      
+        // $barang_masuk= DB::table('barang_masuk')->where('id',$id)->first();
+        // return view('admin.barang_masuk.edit',['barang_masuk'=>$barang_masuk]);
     }
 
     public function update(Request $request, $id) {

@@ -34,14 +34,17 @@
                   <hr>
                   <form class="forms-sample" action="/admin/barang_masuk/update/{{$barang_masuk->id}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
+                   
                     <div class="form-group">
-                      <select class="form-control select2" style="width:100%;" name="id_barang" id="id_barang">
-                      <option disabled value>Pilih Barang</option>
-                      @foreach ($barang_masuk as $data)
-                      <option value="{{$data->id}}">{{ $data->barang}}</option>
-                      @endforeach
-                    </select>
-                    </div>
+                        <label>Barang</label>
+                        <select required name="id_barang" class="js-example-basic-single w-100">
+                          <option value="{{$barang->id}">{{$barang->nama}}-</option>
+                          @foreach($barang as $data)
+                          <option value="{{$data->id}}">{{$data->nama}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+
 
 
                     <!-- <div class="form-group">
