@@ -52,7 +52,7 @@
                       <div class="form-group">
                         <label>Satuan</label>
                         <select required name="id_satuan" class="js-example-basic-single w-100">
-                          <option value="{{$satuan->id}">{{$satuan->nama}}-</option>
+                          <option value="{{$satuan->id}}">{{$satuan->nama}}-</option>
                           @foreach($satuanAll as $data)
                           <option value="{{$data->id}}">{{$data->nama}}</option>
                           @endforeach

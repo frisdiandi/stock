@@ -39,8 +39,8 @@ class DataController extends Controller
     public function edit($id){
         $barang= DB::table('barang')->where('id',$id)->first();
 
-        $satuan= DB::table('satuan')->find($magang->id_universitas);
-        $satuan_all= DB::table('satuan')->where('id','!=',$satuan->id)->get();
+        $satuan= DB::table('satuan')->find($barang->id_satuan);
+        $satuanAll= DB::table('satuan')->where('id','!=',$satuan->id)->get();
 
         return view('admin.barang.edit',['barang'=>$barang,'satuan'=>$satuan,'satuanAll'=>$satuanAll]);
     }

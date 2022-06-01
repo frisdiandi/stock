@@ -34,11 +34,17 @@
                   <hr>
                   <form class="forms-sample" action="/admin/barang_keluar/create" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
+                    
                     <div class="form-group">
-                      <label for="exampleInputUsername1">Nama Barang</label>
-                      <input type="text" autofocus required class="form-control" name="nama" placeholder="Masukan Nama Barang...">
-                    </div>
-
+                        <label>Nama Barang</label>
+                        <select required name="id_barang" class="js-example-basic-single w-100">
+                          <option value="">-- Pilih Nama Barang ---</option>
+                          @foreach($barang as $data)
+                          <option value="{{$data->id}}">{{$data->nama}}</option>
+                          @endforeach
+                        </select>
+                      </div> 
+                
                     <div class="form-group">
                       <label for="exampleInputUsername1">Tanggal</label>
                       <input type="date" autofocus required class="form-control" name="tanggal">
