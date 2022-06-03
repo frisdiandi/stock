@@ -56,8 +56,13 @@
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputUsername1">Id Jenis Barang</label>
-                        <input type="text" autofocus required class="form-control" name="id_jenis" placeholder="Masukan Id Jenis Barang...">
+                        <label>Jenis</label>
+                        <select required name="id_jenis" class="js-example-basic-single w-100">
+                          <option value="">-- Pilih Nama Jenis Barang ---</option>
+                          @foreach($jenis as $data)
+                          <option value="{{$data->id}}">{{$data->nama}}</option>
+                          @endforeach
+                        </select>
                       </div>
                     <button type="submit" class="btn btn-primary mt-1 mr-2"><i class="mdi mdi-content-save-all"></i> Tambah Data</button>
                   </form>

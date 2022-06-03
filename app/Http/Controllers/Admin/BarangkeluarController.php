@@ -11,7 +11,6 @@ class BarangkeluarController extends Controller
 {
     public function read()
     {
-            
         $barang_keluar = DB::table('barang_keluar')->orderBy('id','DESC')->get();
         return view('admin.barang_keluar.index',['barang_keluar'=>$barang_keluar]);
 
@@ -22,14 +21,19 @@ class BarangkeluarController extends Controller
     }
 
     public function create(Request $request){
+        $barang= DB::table('barang')->find($request->id_barang);
+
+        if($request->jumlah > $barang->jumlah) {
+            return redirect('/admin/barang_keluar')->with("error","Stok Tidak Boleh Melebihi Jumlah Saat Ini, Stok Saat ini Berjumlah ".$barang->jumlah);
+        }
+        
         DB::table('barang_keluar')->insert([
             'id_barang' => $request->id_barang,
             'tanggal' => $request->tanggal,
             'jumlah' => $request->jumlah,
+            'keterangan' => $request->keterangan,
             'id_user' => Auth::User()->id
         ]);
-
-        $barang= DB::table('barang')->where('id',$request->id_barang)->first();
 
         $stock = $barang->jumlah - $request->jumlah;
 
@@ -50,11 +54,11 @@ class BarangkeluarController extends Controller
 
     public function edit($id){
         $barang_keluar= DB::table('barang_keluar')->where('id',$id)->first();
-        $barang= DB::table('barang')->find($barang->id);
-        return view('admin.barang_keluar.edit',['barang_keluar'=>$barang_keluar,'barang'=>$barang]);
-      
-        // $barang_keluar= DB::table('barang_keluar')->where('id',$id)->first();
-        // return view('admin.barang_keluar.edit',['barang_keluar'=>$barang_keluar]);
+
+        $barang= DB::table('barang')->find($barang_keluar->id_barang);
+        $barangAll= DB::table('barang')->where('id','!=',$barang->id)->get();
+
+        return view('admin.barang_keluar.edit',['barang_keluar'=>$barang_keluar,'barang'=>$barang,'barangAll'=>$barangAll]);
     }
 
     public function update(Request $request, $id) {
@@ -63,7 +67,8 @@ class BarangkeluarController extends Controller
             ->update([
                 'id_barang' => $request->id_barang,
                 'tanggal' => $request->tanggal,
-                'jumlah' => $request->jumlah]);
+                'jumlah' => $request->jumlah,
+                'keterangan' => $request->keterangan]);
 
         return redirect('/admin/barang_keluar')->with("success","Data Berhasil Diupdate !");
     }

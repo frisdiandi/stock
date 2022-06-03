@@ -54,6 +54,11 @@
                       <label for="exampleInputUsername1">Jumlah</label>
                       <input type="text" autofocus required class="form-control" name="jumlah" placeholder="Masukan Jumlah Barang...">
                     </div>
+                    
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">Keterangan</label>
+                      <input type="text" autofocus required class="form-control" name="keterangan" placeholder="Masukan Keterangan Barang...">
+                    </div>
 
 
                     <button type="submit" class="btn btn-primary mt-1 mr-2"><i class="mdi mdi-content-save-all"></i> Tambah Data</button>

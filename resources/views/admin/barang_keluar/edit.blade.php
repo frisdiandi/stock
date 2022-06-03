@@ -37,19 +37,12 @@
                     <div class="form-group">
                         <label>Barang</label>
                         <select required name="id_barang" class="js-example-basic-single w-100">
-                          <option value="{{$barang->id}">{{$barang->nama}}-</option>
-                          @foreach($barang as $data)
+                          <option value="{{$barang->id}}">{{$barang->nama}}-</option>
+                          @foreach($barangAll as $data)
                           <option value="{{$data->id}}">{{$data->nama}}</option>
                           @endforeach
                         </select>
                       </div>
-
-
-
-                    <!-- <div class="form-group">
-                      <label for="exampleInputUsername1">Nama barang</label>
-                      <input type="text" autofocus required class="form-control" name="id_barang" placeholder="Masukan Nama barang..." value="{{$barang_keluar->id_barang}}">
-                    </div> -->
 
                     <div class="form-group">
                       <label for="exampleInputUsername1">Tanggal</label>
@@ -59,6 +52,11 @@
                     <div class="form-group">
                       <label for="exampleInputUsername1">Jumlah</label>
                       <input type="text" autofocus required class="form-control" name="jumlah" placeholder="Masukan Jumlah Barang..." value="{{$barang_keluar->jumlah}}">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">Keterangan</label>
+                      <input type="text" autofocus required class="form-control" name="keterangan" placeholder="Masukan Jumlah Barang..." value="{{$barang_keluar->keterangan}}">
                     </div>
 
                     <button type="submit" class="btn btn-primary mt-1 mr-2"><i class="mdi mdi-content-save-all"></i> Update Data</button>

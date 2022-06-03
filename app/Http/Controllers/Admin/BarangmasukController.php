@@ -29,6 +29,7 @@ class BarangmasukController extends Controller
             'id_barang' => $request->id_barang,
             'tanggal' => $request->tanggal,
             'jumlah' => $request->jumlah,
+            'keterangan' => $request->keterangan,
             'id_user' => Auth::User()->id
         ]);
 
@@ -51,13 +52,13 @@ class BarangmasukController extends Controller
         return view('admin.barang_masuk.detail',['barang_masuk'=>$barang_masuk]);
     }
 
-    public function edit($id){
+    public function edit($id){    
         $barang_masuk= DB::table('barang_masuk')->where('id',$id)->first();
-        $barang= DB::table('barang')->find($barang->id);
-        return view('admin.barang_masuk.edit',['barang_masuk'=>$barang_masuk,'barang'=>$barang]);
-      
-        // $barang_masuk= DB::table('barang_masuk')->where('id',$id)->first();
-        // return view('admin.barang_masuk.edit',['barang_masuk'=>$barang_masuk]);
+
+        $barang= DB::table('barang')->find($barang_masuk->id_barang);
+        $barangAll= DB::table('barang')->where('id','!=',$barang->id)->get();
+
+        return view('admin.barang_masuk.edit',['barang_masuk'=>$barang_masuk,'barang'=>$barang,'barangAll'=>$barangAll]);
     }
 
     public function update(Request $request, $id) {
@@ -66,7 +67,8 @@ class BarangmasukController extends Controller
             ->update([
                 'id_barang' => $request->id_barang,
                 'tanggal' => $request->tanggal,
-                'jumlah' => $request->jumlah]);
+                'jumlah' => $request->jumlah,
+                'keterangan' => $request->keterangan]);
 
         return redirect('/admin/barang_masuk')->with("success","Data Berhasil Diupdate !");
     }

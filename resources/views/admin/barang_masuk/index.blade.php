@@ -53,9 +53,10 @@
                       <thead class="bg-primary" style="color: white">
                         <tr>
                           <th>#</th>
-                          <th>Nama barang</th>
                           <th>Tanggal</th>
+                          <th>Nama barang</th>
                           <th>Jumlah</th>
+                          <th>Keterangan</th>
                           <th class="text-center">Action</th>
                         </tr>
                       </thead>
@@ -64,6 +65,7 @@
                         @foreach($barang_masuk as $data)
                         <tr class="odd selected">
                           <td>{{$no++}}</td>
+                          <td>{{$data->tanggal}}</td>
                           <td>
                             <?php
                               $id_barang = $data->id_barang;
@@ -71,8 +73,8 @@
                               echo $barang->nama;
                             ?>
                           </td>
-                          <td>{{$data->tanggal}}</td>
                           <td>{{$data->jumlah}}</td>
+                          <td>{{$data->keterangan}}</td>
                           <td class="text-center">
                             <a href="/admin/barang_masuk/edit/{{$data->id}}"><button class="btn btn-inverse-success btn-sm"><i class="ti-pencil"> Edit</i></button></a>
                             <button class="btn btn-inverse-danger btn-sm" data-toggle="modal" data-target="#data-{{$data->id}}"><i class="ti-trash"> Delete</i></button>
